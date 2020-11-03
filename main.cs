@@ -18,7 +18,7 @@ class MainClass {
 
     car.Setcltdono ("cleber do rodó pereira");
 
-    Console.WriteLine("       Nome       |     Preço");
+    Console.WriteLine("       Nome       |     Preço    |Código");
     for (int i = 0; i < bh.Getdescricao().Count;i++){
       Console.WriteLine($@"{bh.Getdescricao()[i]} - {bh.Getpreco()[i]} - {bh.getCodigo()[i]}");
     }
@@ -27,7 +27,7 @@ class MainClass {
     string decis = "S";
     while (decis == "S") {
       
-      Console.Write("Digite o código do Produto que deseja comprar ~ ");
+      Console.Write("\n\nDigite o código do Produto que deseja comprar ~ ");
       
       codigo = int.Parse(Console.ReadLine());
 
@@ -35,7 +35,7 @@ class MainClass {
       pedQuant = int.Parse(Console.ReadLine());
 
       for(int i = 0; i < bh.Getdescricao().Count;i++){
-        if(bh.getCodigo()[i] == codigo & bh.Getqtditens()[i] < pedQuant){
+        if(bh.getCodigo()[i] == codigo){
           
 
           car  = new carinho(bh.Getdescricao()[i],pedQuant,bh.getCodigo()[i],bh.Getpreco()[i]);
@@ -53,8 +53,6 @@ class MainClass {
 
     for (int i = 0; i < Lista_carinho.Count;i++){
       Console.WriteLine($"Produto ~ {Lista_carinho[i].Getitens()[i]}\n código ~ {Lista_carinho[i].Getcodigo()} \n quantidade ~ {Lista_carinho[i].Getqtditens()} \n Valor ~ {Lista_carinho[i].Getpreco()} \n-------------------------------------------");
-
-      total = total + (Lista_carinho[i].Getpreco()*Lista_carinho[i].Getqtditens());
     }
 
     decis = "S";
@@ -71,7 +69,7 @@ class MainClass {
          for (int i = 0; i < Lista_carinho.Count;i++){
 
            if (codigo == Lista_carinho[i].Getcodigo() ){
-             Lista_carinho.RemoveAt(x);
+             Lista_carinho.RemoveAt(i);
            }
      
         }
@@ -84,11 +82,11 @@ class MainClass {
     
     for (int i = 0; i < Lista_carinho.Count;i++){
       Console.WriteLine($"Produto ~ {Lista_carinho[i].Getitens()[i]}\n código ~ {Lista_carinho[i].Getcodigo()} \n quantidade ~ {Lista_carinho[i].Getqtditens()} \n Valor ~ {Lista_carinho[i].Getpreco()} \n-------------------------------------------");
-
+      total = total + (Lista_carinho[i].Getpreco()*Lista_carinho[i].Getqtditens());
     }
 
     Console.WriteLine($"Total da Compra >> {total}");
-    
-    Console.WriteLine($"Foi Gerado Um código de Boleto Bancario para o Pagamento.\nO código para Pagamento >> {bdn}");
+    int aleatorio = rdn.Next(100000000, 999999999);
+    Console.WriteLine($"Foi Gerado Um código de Boleto Bancario para o Pagamento.\nO código para Pagamento >> {aleatorio}");
   }
 }
